@@ -32,8 +32,6 @@ console.log("2", isPrime2(2));
 console.log("3", isPrime2(3));
 console.log("4", isPrime2(4));
 console.log("5", isPrime2(5));
-//2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97
-//O(sqrt(n))
 
 /////////////////////
 // let arr = [2, 3, 5, 7];
