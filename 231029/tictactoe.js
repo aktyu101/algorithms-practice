@@ -49,11 +49,11 @@
 // console.log("tictactoewinner 0", ticTacToeWinner(board, "o"));
 // console.log("tictactoewinner x", ticTacToeWinner(board, "x"));
 const board = [
-  ["x", "x", "x", "x", "x"],
-  ["x", "-", "x", "-", "o"],
-  ["x", "-", "x", "-", "o"],
-  ["x", "-", "x", "-", "o"],
-  ["x", "-", "x", "-", "o"],
+  ["x", "o", "x", "o", "-"],
+  ["x", "x", "x", "o", "-"],
+  ["x", "o", "x", "o", "-"],
+  ["x", "o", "o", "-", "-"],
+  ["x", "o", "x", "o", "-"],
 ];
 
 function checkrow(rowArr, letter) {
@@ -67,6 +67,7 @@ function checkrow(rowArr, letter) {
 
 function checkCol(gameBoardMatrix, columnIndex, letter) {
   for (let i = 0; i < gameBoardMatrix.length; i++) {
+    //0 < 4
     if (gameBoardMatrix[i][columnIndex] != letter) {
       return false;
     }
@@ -78,41 +79,53 @@ function ticTacToeWinner(gameBoardMatrix, letter) {
   //행 확인
   //some, every
   const rowWin = gameBoardMatrix.some((board) => checkrow(board, letter));
-  //열 확인
-  const colWin = Array({ length: gameBoardMatrix[0].length }).some((_, index) =>
-    checkCol(gameBoardMatrix, index, letter)
-  );
-  //안쓸때_
+  //열 확인 수정전
+  // const colWin = Array({ length: gameBoardMatrix[0].length }).some((_, index) =>
+  //   checkCol(gameBoardMatrix, index, letter)
+  // );
+  //열 확인 수정후
+  const colWin = gameBoardMatrix[0]
+    .map((_, index) => checkCol(gameBoardMatrix, index, letter))
+    .some((result) => result);
+  //------map 이나 some 쓰면 checkCol 함수를 너무 많이 호출 하니깐 한번만 호출해서 쓰도록 거기서 필요한 length 나 인덱스값 충분히 구하니깐
 
   //함수 만들어서 코드 줄이기!
-  function checkDiagonaLeftToRight(gameBoardMatrix, letter) {
-    return gameBoardMatrix.every(
-      (board, index) => gameBoardMatrix[index][index] === letter
-    );
-  }
+  // function checkDiagonaLeftToRight(gameBoardMatrix, letter) {
+  //   return gameBoardMatrix.every(
+  //     (board, index) => gameBoardMatrix[index][index] === letter
+  //   );
+  // }
+  // //왼쪽대각선
+  // const diagonaWinLeftToRight = checkDiagonaLeftToRight(
+  //   gameBoardMatrix,
+  //   letter
+  // );
+  //오른쪽대각선
+  // function checkDiagonaRightToLeft(gameBoardMatrix, letter) {
+  //   return gameBoardMatrix.every(
+  //     (board, index) => board[board.length - index + 1] === letter
+  //   );
+  // }
+  //
+  // const diagonaWinRightToLeft = checkDiagonaRightToLeft(
+  //   gameBoardMatrix,
+  //   letter
+  // );
 
-  //왼쪽대각선
-  const diagonaWinLeftToRight = checkDiagonaLeftToRight(
-    gameBoardMatrix,
-    letter
+  // 왼쪽 대각선 확인
+  const diagonaWinLeftToRight = gameBoardMatrix.every(
+    (row, index) => row[index] === letter
   );
-  //오른쪽대각선
-  function checkDiagonaRightToLeft(gameBoardMatrix, letter) {
-    return gameBoardMatrix.every(
-      (board, index) => board[board.length - index + 1] === letter
-    );
-  }
 
-  //오른쪽대각선
-  const diagonaWinRightToLeft = checkDiagonaRightToLeft(
-    gameBoardMatrix,
-    letter
+  // 오른쪽 대각선 확인
+  const diagonaWinRightToLeft = gameBoardMatrix.every(
+    (row, index) => row[row.length - index - 1] === letter
   );
   return [rowWin, colWin, diagonaWinLeftToRight, diagonaWinRightToLeft].some(
     (result) => result
   );
 }
-console.log("tictactoewinner 0", ticTacToeWinner(board, "o"));
+console.log("tictactoewinner o", ticTacToeWinner(board, "o"));
 console.log("tictactoewinner x", ticTacToeWinner(board, "x"));
 
 //과제 checkcol확인
