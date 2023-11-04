@@ -26,7 +26,7 @@ function spiralPrint(matrix) {
       for (let col = rigthCol; col >= leftCol; col--) {
         console.log(matrix[btmRow][col]);
       }
-      //조건 col > leftCol
+      //조건 col > leftcol
       btmRow--;
     }
     if (leftCol <= rigthCol) {

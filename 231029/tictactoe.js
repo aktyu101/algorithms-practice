@@ -52,8 +52,8 @@ const board = [
   ["x", "o", "x", "o", "-"],
   ["x", "x", "x", "o", "-"],
   ["x", "o", "x", "o", "-"],
-  ["x", "o", "o", "-", "-"],
-  ["x", "o", "x", "o", "-"],
+  ["x", "o", "o", "x", "-"],
+  ["-", "o", "x", "o", "x"],
 ];
 
 function checkrow(rowArr, letter) {
@@ -87,7 +87,7 @@ function ticTacToeWinner(gameBoardMatrix, letter) {
   const colWin = gameBoardMatrix[0]
     .map((_, index) => checkCol(gameBoardMatrix, index, letter))
     .some((result) => result);
-  //------map 이나 some 쓰면 checkCol 함수를 너무 많이 호출 하니깐 한번만 호출해서 쓰도록 거기서 필요한 length 나 인덱스값 충분히 구하니깐
+  //------map 이나 some 쓰면 checkCol 함수를 너무 많이 호출 하니깐 한번만 호출해서 짜보기 필요한 length 나 인덱스값
 
   //함수 만들어서 코드 줄이기!
   // function checkDiagonaLeftToRight(gameBoardMatrix, letter) {
