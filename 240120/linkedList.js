@@ -81,6 +81,7 @@ class SinglyLinkedList {
 
 const sll1 = new SinglyLinkedList();
 sll1.insert(1);
+sll1.insert(1);
 sll1.insert(10);
 sll1.insert(3);
 sll1.insert(3);
@@ -92,7 +93,7 @@ console.log("head next next data", sll1.head.next.next.data);
 console.log("head next next next data", sll1.head.next.next.next?.data);
 // ? => null이 예상되면 undefined 반환
 
-console.log(sll1.size);
+console.log("lengths", sll1.size);
 //sll1.remove(3);
 console.log(sll1.size);
 // console.log("delete head", sll1.deleteAtHead());
@@ -136,8 +137,7 @@ function deleteDuplicateInUnsortedSll(sll1) {
     }
     temp = temp.next;
   }
-  console.log(temp);
 }
 
 deleteDuplicateInUnsortedSll(sll1);
-// 고쳐오기
+console.log("lengths", sll1.size);
