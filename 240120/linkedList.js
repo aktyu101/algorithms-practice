@@ -93,7 +93,7 @@ console.log("head next next data", sll1.head.next.next.data);
 console.log("head next next next data", sll1.head.next.next.next?.data);
 // ? => null이 예상되면 undefined 반환
 
-console.log("lengths", sll1.size);
+console.log("origin lengths", sll1.size);
 //sll1.remove(3);
 console.log(sll1.size);
 // console.log("delete head", sll1.deleteAtHead());
@@ -118,14 +118,13 @@ function reverseSingleLinkedList(sll1) {
   return node;
 }
 
-console.log(reverseSingleLinkedList(sll1));
-
 // 중복 항목 제거
 function deleteDuplicateInUnsortedSll(sll1) {
   const track = [];
   let temp = sll1.head;
   let prev = null;
 
+  console.log("d", sll1);
   while (temp) {
     if (track.indexOf(temp.data) >= 0) {
       // 없으면 -1, 데이터 있는지 판단
@@ -137,7 +136,10 @@ function deleteDuplicateInUnsortedSll(sll1) {
     }
     temp = temp.next;
   }
+  console.log(track);
+  // return temp;
 }
 
+//console.log(reverseSingleLinkedList(sll1));
+
 deleteDuplicateInUnsortedSll(sll1);
-console.log("lengths", sll1.size);

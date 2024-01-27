@@ -64,7 +64,7 @@ class SinglyLinkedList {
       currentHead = this.head;
       this.size--;
     }
-    // 나머지 목록을 탐색하여 다른 발생을 찾고 제거
+
     let prev = null;
     while (currentHead !== null) {
       if (currentHead.data === value) {
